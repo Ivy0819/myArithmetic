@@ -61,7 +61,8 @@
             android:gravity="center"
             android:text="开始答题"
             android:textColor="#F4F0F0"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:onClick="begintest"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
