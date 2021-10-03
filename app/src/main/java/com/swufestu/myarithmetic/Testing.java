@@ -24,11 +24,12 @@ import java.util.TimerTask;
 
 public class Testing extends AppCompatActivity implements Runnable{
 
-    String TAG = "test";
-    int time = 10;
-    String[] question;
-    String[] correct_result;
-    String[] answers;
+    String TAG = "TestPage";
+    int time, time_all;
+    String[] question;//题
+    String[] correct_result;//正确答案
+    String[] answers;//提交答案
+    boolean[] correct_num;
     Handler handler;//定义放外面，因为到处都会用
     EditText answer;
     EditText process;
@@ -50,14 +51,23 @@ public class Testing extends AppCompatActivity implements Runnable{
         question = test.getStringArrayExtra("question");
         correct_result = test.getStringArrayExtra("correct_result");
         time = test.getIntExtra("time",10);
+        time_all = test.getIntExtra("time",10);
+        //初始化answer与correct_num
         answers = new String[question.length];
+        correct_num = new boolean[question.length];
+        for(int i = 0;i < question.length;i++){
+            answers[i] = "null";
+            correct_num[i] = false;
+        }
+
         Log.i(TAG, "onCreate: question"+question);
         Log.i(TAG, "onCreate: correct_result"+correct_result);
         Log.i(TAG, "onCreate: time"+time);
         process = findViewById(R.id.process);
-        process.setText("1/"+(question.length-1));
+        process.setText("1/"+question.length);
         formula = findViewById(R.id.formula);
         formula.setText(question[0]);
+        answer.setText("");
         prior.setVisibility(View.INVISIBLE);
 
         //开启线程
@@ -83,17 +93,23 @@ public class Testing extends AppCompatActivity implements Runnable{
         };
     }
 
+//跳转到FinishPage
     private void toFinishPage(){
 
-        Log.i("TestPage", "打开Finish窗口");
-        Intent config = new Intent(this, Finish.class);
+        int cost_time = time_all-time;
+        Log.i(TAG, "toFinishPage: cost_time="+cost_time);
+        Intent score = new Intent(this,Finish.class);
 
-        startActivity(config);
+        score.putExtra("correct_num",correct_num);
+        score.putExtra("cost_time",cost_time);
+        startActivity(score);
+
+        Log.i("TestPage", "打开Finish窗口");
+
     }
 
-
+//倒计时线程
     public void run() {
-        Log.i("TestPage", "开启线程");
         Timer timer = new Timer();
         timertask = new TimerTask() {
             @Override
@@ -112,49 +128,51 @@ public class Testing extends AppCompatActivity implements Runnable{
 
     }
 
+//处理下一题&&完成
     public void next(View v){
-        answers[num] = answer.getText().toString();
-        Log.i(TAG, "next: answer"+answers[num]);
-        prior.setVisibility(View.VISIBLE);
-        int marks = 0;
-        int correct_num = 0;
+        answers[num] = answer.getText().toString();//获取上一题的answer
+        correct_num[num]=answers[num].equals(correct_result[num])?true:false;
+        Log.i(TAG, "next: correct_num:"+correct_num[num]);
+
+
         num = num + 1;
         if(num<(question.length-1)) {
+            prior.setVisibility(View.VISIBLE);
             process.setText((num + 1) + "/" + question.length);
             formula.setText(question[num]);
             answer.setText("");
         }else if(num == (question.length-1)){
+            prior.setVisibility(View.VISIBLE);
             next.setText("完成");
             process.setText((num + 1) + "/" + question.length);
             formula.setText(question[num]);
             answer.setText("");
         } else{
-            for(int j=0;j<question.length;j++){
-                if(answers[j].equals(correct_result[j])){
-                    marks +=10;
-                    correct_num  +=1;
-                }
-            }
-            String correct_rate = String.format("%.2f", correct_num/(num+1));
-            int cost_time = time-Integer.valueOf(String.valueOf(timertask)).intValue();
-            Intent score = new Intent(this,Finish.class);
-            score.putExtra("marks",marks);
-            score.putExtra("cost_time",cost_time);
-            score.putExtra("correct_rate",correct_rate);
-            startActivity(score);
+            Log.i(TAG, "next: begin to finish");
+            toFinishPage();
+
         }
     }
 
+//处理上一题
     public void prior(View v){
         num -=1;
-        if(num==0){
+
+        if(num==0) {
             prior.setVisibility(View.INVISIBLE);
+            process.setText((num + 1) + "/" + (question.length));
+            formula.setText(question[num]);
+            answer.setText(answers[num]);
+        }else{
+            prior.setVisibility(View.VISIBLE);
+            process.setText((num + 1) + "/" + (question.length));
+            formula.setText(question[num]);
+            answer.setText(answers[num]);
+            next.setText("下一题");
         }
-        process.setText((num + 1) + "/" + (question.length - 1));
-        formula.setText(question[num]);
-        answer.setText(answers[num]);
     }
 
+    //回到MainPage
     public void back(View v){
         finish();
     }

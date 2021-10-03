@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    String TAG ="test";
+    String TAG ="MainPage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         EditText test_time = findViewById(R.id.test_time);
         int question_number = Integer.valueOf(question_count.getText().toString()).intValue();
         int number_max = Integer.valueOf(calculate_range.getText().toString()).intValue();
-        int time = Integer.valueOf(test_time.getText().toString()).intValue();
+        float time = Float.valueOf(test_time.getText().toString()).floatValue();
         String[] question = new String[question_number];
         String[] correct_result = new String[question_number];
         for (int i = 0; i < question_number; i++) {
@@ -53,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
             correct_result[i] = result;
         }
         Intent test = new Intent(this,Testing.class);
-        test.putExtra("question",question);
-        test.putExtra("correct_result",correct_result);
-        test.putExtra("time",time*60);
-        Log.i(TAG, "begintest: question"+question);
-        Log.i(TAG, "begintest: correct_result"+correct_result);
-        Log.i(TAG, "begintest: time"+time);
-        startActivityForResult(test,1); //打开窗口
+        test.putExtra("question",question);//获得question数组
+        test.putExtra("correct_result",correct_result);//获得正确答案数组
+        test.putExtra("time",Math.round(time*60));
+        Log.i(TAG, "get question"+question);
+        Log.i(TAG, "get correct_result"+correct_result);
+        Log.i(TAG, "get time"+time);
+        startActivity(test); //打开窗口
     }
 
 }
