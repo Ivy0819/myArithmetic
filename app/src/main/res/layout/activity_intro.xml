@@ -23,32 +23,84 @@
             android:layout_gravity="left"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:text="《退出"
+            android:text="@string/quit"
             android:textSize="30dp"
             android:onClick="introquit"/>
 
         </FrameLayout>
-        <TextView
-            android:id="@+id/textView2"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="介绍"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="40sp"/>
+            tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="1.题数即需要生成的题目个数\n
-2.计算范围即计算题中出现的数的范围，输入最大值(不含）即可\n
-3.时间限制即需在规定时间内完成所有计算题，输入时间（分钟）后，四舍五入形成倒计时（秒）\n
-4.生成的每道计算题分值10分\n
-5.中途退出答题，本次答题作废，不做任何记录\n
-6.完成所有题目后，可以点击查看错题查看本次测试错题"
-            android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="@string/introtitle"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="40sp"/>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro1"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro2"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro3"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro4"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro5"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro6"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:text="@string/intro7"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

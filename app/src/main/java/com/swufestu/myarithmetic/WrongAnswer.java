@@ -32,10 +32,10 @@ public class WrongAnswer extends AppCompatActivity {
         for(int i = 0;i < question.length;i++){
             if (!(correct_result[i].equals(answers[i]))){
                 String text = "";
-                text = "错题号："+(i+1)+"\n";
-                text = text +"题目:"+question[i]+"\n";
-                text = text +"正确答案:"+correct_result[i]+"\n";
-                text = text +"你的答案:"+answers[i]+"\n";
+                text = getResources().getString(R.string.wrong_question_no)+(i+1)+"\n";
+                text = text +getResources().getString(R.string.wrong_question)+question[i]+"\n";
+                text = text +getResources().getString(R.string.correct_answer)+correct_result[i]+"\n";
+                text = text +getResources().getString(R.string.your_answer)+answers[i]+"\n";
                 text = text +"\n";
                 text_list += text;
                 Log.i(TAG, "onCreate: text="+text);
@@ -46,8 +46,9 @@ public class WrongAnswer extends AppCompatActivity {
     }
 
     public void finishQuit(View v){
-        Intent finish = new Intent(this,MainActivity.class);
-        startActivity(finish);
+//        Intent finish = new Intent(this,MainActivity.class);
+//        startActivity(finish);
+        finish();
     }
 }
 

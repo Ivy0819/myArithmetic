@@ -27,7 +27,7 @@
                 android:layout_gravity="left"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:text="《退出"
+                android:text="@string/quit"
                 android:textSize="30dp"
                 android:onClick="back"/>
 
@@ -38,7 +38,7 @@
                 android:layout_gravity="right"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:text="90"
+                android:text=""
                 android:textSize="40sp" />
         </FrameLayout>
 
@@ -68,8 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:hint="输入答案"
-            android:textSize="40sp" />
+            android:hint="@string/input_answer"
+            android:textSize="40sp"
+            android:inputType="number"/>
 
 
         <RelativeLayout
@@ -89,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_margin="20dp"
-                    android:text="上一题"
+                    android:text="@string/prior"
                     android:textColor="#FFFFFF"
                     android:textSize="40sp"
                     android:onClick="prior"/>
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_margin="20dp"
-                    android:text="下一题"
+                    android:text="@string/next"
                     android:textColor="#FFFFFF"
                     android:textSize="40sp"
                     android:onClick="next"/>

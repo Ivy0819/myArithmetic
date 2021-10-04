@@ -27,7 +27,7 @@
                 android:layout_gravity="left"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:text="《退出"
+                android:text="@string/quit"
                 android:textSize="30dp"
                 android:onClick="finishquit"/>
 
@@ -37,11 +37,11 @@
             android:id="@+id/score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="60dp"
             android:gravity="left"
-            android:text="分数："
+            android:text="@string/marks"
             android:textColor="@color/purple_200"
             android:textSize="40sp" />
 
@@ -52,7 +52,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="60dp"
             android:gravity="left"
-            android:text="准确率："
+            android:text="@string/correct_rate"
             android:textColor="@color/purple_200"
             android:textSize="40sp" />
 
@@ -63,7 +63,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="60dp"
             android:gravity="left"
-            android:text="花费时间："
+            android:text="@string/cost_time"
             android:textColor="@color/purple_200"
             android:textSize="40sp" />
 
@@ -76,7 +76,7 @@
             android:textColor="#F4F0F0"
             android:textSize="30dp"
             android:onClick="toWAPage"
-            android:text="查看错题" />
+            android:text="@string/wrong_answer" />
 
 
     </LinearLayout>

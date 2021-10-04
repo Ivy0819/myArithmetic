@@ -24,7 +24,7 @@
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:onClick="finishQuit"
-                android:text="《退出"
+                android:text="@string/quit"
                 android:textSize="30dp" />
 
         </FrameLayout>

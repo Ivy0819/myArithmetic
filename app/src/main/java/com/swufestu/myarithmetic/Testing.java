@@ -9,10 +9,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class Testing extends AppCompatActivity implements Runnable{
     Button next;
     int num = 0;
     TimerTask timertask;
+    TextView show_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class Testing extends AppCompatActivity implements Runnable{
         answer = findViewById(R.id.answer);
         prior = findViewById(R.id.prior);
         next = findViewById(R.id.next);
+        show_count = findViewById(R.id.count_down);
 
         Intent test =getIntent();
         question = test.getStringArrayExtra("question");
@@ -74,8 +78,6 @@ public class Testing extends AppCompatActivity implements Runnable{
 
         Thread t = new Thread(this);
         this.run();//this.run()
-        TextView show_count = findViewById(R.id.count_down);
-
 
         handler = new Handler(Looper.myLooper()){
             @Override
@@ -84,8 +86,12 @@ public class Testing extends AppCompatActivity implements Runnable{
                 if(show > 0){
                     show_count.setText(show+"");
                     run();
-                }
-                else {
+                    if(show==10){
+                        Toast toast = Toast.makeText(Testing.this, getResources().getString(R.string.timewarn), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER,0,0);
+                        toast.show();
+                    }
+                } else {
                     toFinishPage();
                 }
 
@@ -122,7 +128,6 @@ public class Testing extends AppCompatActivity implements Runnable{
                 message.arg1 = time;
                 //6.发送消息给handlermessge进行操作
                 handler.sendMessage(message);
-
             }
         };
 
@@ -133,7 +138,7 @@ public class Testing extends AppCompatActivity implements Runnable{
 
 //处理下一题&&完成
     public void next(View v){
-        answers[num] = answer.getText().toString();//获取上一题的answer
+        answers[num] = String.format("%.2f",Double.valueOf(answer.getText().toString()).doubleValue());//获取上一题的answer
         correct_num[num]=answers[num].equals(correct_result[num])?true:false;
         Log.i(TAG, "next: correct_num:"+correct_num[num]);
 
@@ -146,7 +151,7 @@ public class Testing extends AppCompatActivity implements Runnable{
             answer.setText("");
         }else if(num == (question.length-1)){
             prior.setVisibility(View.VISIBLE);
-            next.setText("完成");
+            next.setText(R.string.finish);
             process.setText((num + 1) + "/" + question.length);
             formula.setText(question[num]);
             answer.setText("");
@@ -171,7 +176,7 @@ public class Testing extends AppCompatActivity implements Runnable{
             process.setText((num + 1) + "/" + (question.length));
             formula.setText(question[num]);
             answer.setText(answers[num]);
-            next.setText("下一题");
+            next.setText(R.string.next);
         }
     }
 

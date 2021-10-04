@@ -50,11 +50,11 @@ public class TreeNode {
         if(hasChild()){
             switch(str){
                 case "+":
-                    return String.valueOf(Integer.parseInt(getLchild().getResult()) + Integer.parseInt(getRchild().getResult()));
+                    return String.format("%.2f",Double.valueOf(getLchild().getResult()) + Double.valueOf(getRchild().getResult()));
                 case "-":
-                    return String.valueOf(Integer.parseInt(getLchild().getResult()) - Integer.parseInt(getRchild().getResult()));
+                    return String.format("%.2f",Double.valueOf(getLchild().getResult()) - Double.valueOf(getRchild().getResult()));
                 case "*":
-                    return String.valueOf(Integer.parseInt(getLchild().getResult()) * Integer.parseInt(getRchild().getResult()));
+                    return String.format("%.2f",Double.valueOf(getLchild().getResult()) * Double.valueOf(getRchild().getResult()));
                 case "/":
                     if(getRchild().getResult().equals("0")){
                         while(str.equals("/")){
@@ -62,14 +62,15 @@ public class TreeNode {
                         }
                         return this.getResult();
                     }
-                    else if(Integer.parseInt(getLchild().getResult()) % Integer.parseInt(getRchild().getResult()) != 0){
-                        while(str.equals("/")){
-                            str = String.valueOf(Ran.getOperator());
-                        }
-                        return this.getResult();
-                    }
+//                    else if(Integer.parseInt(getLchild().getResult()) % Integer.parseInt(getRchild().getResult()) != 0){   //不能被整除换操作符
+//                        while(str.equals("/")){
+//                            str = String.valueOf(Ran.getOperator());
+//                        }
+//                        return this.getResult();
+//                    }
                     else
-                        return String.valueOf(Integer.parseInt(getLchild().getResult()) / Integer.parseInt(getRchild().getResult()));
+                        return String.format("%.2f",Double.valueOf(getLchild().getResult())/Double.valueOf(getRchild().getResult()));
+                    // return String.valueOf(Integer.parseInt(getLchild().getResult()) / Integer.parseInt(getRchild().getResult()));
             }
         }
         return str;

@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">myArithmetic</string>
+    <string name="intro1">1.题数即需要生成的题目个数</string>
+    <string name="intro2">2.计算范围即计算题中出现的数的范围，输入最大值(包含）即可</string>
+    <string name="intro3">3.时间限制即需在规定时间内完成所有计算题，输入时间（分钟）后，四舍五入形成倒计时（秒）</string>
+    <string name="intro4">4.生成的每道计算题分值10分</string>
+    <string name="intro5">5.中途退出答题，本次答题作废，不做任何记录</string>
+    <string name="intro6">6.完成所有题目后，可以点击查看错题查看本次测试错题</string>
+    <string name="introtitle">介绍</string>
+    <string name="quit">《退出</string>
+    <string name="name">四则运算答题器</string>
+    <string name="question_count">题数/个</string>
+    <string name="number_range">数字运算范围/最大值</string>
+    <string name="test_time">测试总时长/分钟</string>
+    <string name="begintest">开始答题</string>
+    <string name="input_answer">输入答案</string>
+    <string name="prior">上一题</string>
+    <string name="next">下一题</string>
+    <string name="finish">完成</string>
+    <string name="cost_time">花费时间：</string>
+    <string name="correct_rate">正确率：</string>
+    <string name="marks">分数：</string>
+    <string name="wrong_answer">查看错题</string>
+    <string name="wrong_question_no">错题号:</string>
+    <string name="wrong_question">题目:</string>
+    <string name="correct_answer">正确答案:</string>
+    <string name="your_answer">你的答案:</string>
+    <string name="intro7">7.若计算结果产生两位以上的小数，四舍五入保留两位</string>
+    <string name="timewarn">测试将于10s后结束</string>
 </resources>

@@ -46,9 +46,9 @@ public class Finish extends AppCompatActivity {
         Log.i(TAG, "onCreate: fenshu"+correct_count*10+"/"+correct_num.length*10);
         Log.i(TAG, "onCreate:zhengquelv"+correct_rate);
         Log.i(TAG, "onCreate: shijian"+cost_time);
-        grades.setText("分数："+correct_count*10+"/"+correct_num.length*10);
-        right_rate.setText("正确率："+correct_rate);
-        time_cost.setText("花费时间："+cost_time+"秒");
+        grades.setText(getResources().getString(R.string.marks)+correct_count*10+"/"+correct_num.length*10);
+        right_rate.setText(getResources().getString(R.string.correct_rate)+correct_rate);
+        time_cost.setText(getResources().getString(R.string.cost_time)+cost_time+"s");
 
 
     }
@@ -72,7 +72,7 @@ public class Finish extends AppCompatActivity {
     public void toWAPage(View button){
 
         Log.i(TAG, "toFinishPage: cost_time="+cost_time);
-        Intent wrong_ans = new Intent(this,WrongAnswer.class);finish();
+        Intent wrong_ans = new Intent(this,WrongAnswer.class);
 
         wrong_ans.putExtra("questions",question);
         wrong_ans.putExtra("correct_result", correct_result);
