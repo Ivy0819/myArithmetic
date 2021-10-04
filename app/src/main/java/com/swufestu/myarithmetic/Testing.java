@@ -102,6 +102,9 @@ public class Testing extends AppCompatActivity implements Runnable{
 
         score.putExtra("correct_num",correct_num);
         score.putExtra("cost_time",cost_time);
+        score.putExtra("questions",question);
+        score.putExtra("correct_result", correct_result);
+        score.putExtra("answers", answers);
         startActivity(score);
 
         Log.i("TestPage", "打开Finish窗口");
