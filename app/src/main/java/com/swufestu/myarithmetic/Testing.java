@@ -98,7 +98,7 @@ public class Testing extends AppCompatActivity implements Runnable{
 
         int cost_time = time_all-time;
         Log.i(TAG, "toFinishPage: cost_time="+cost_time);
-        Intent score = new Intent(this,Finish.class);
+        Intent score = new Intent(this,Finish.class);finish();
 
         score.putExtra("correct_num",correct_num);
         score.putExtra("cost_time",cost_time);

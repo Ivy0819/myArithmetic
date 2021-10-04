@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -53,5 +54,10 @@ public class Finish extends AppCompatActivity {
         String correct_rate = String.format("%.2f", ((double)correct_count/correct_num.length)*100)+"%";
         Log.i(TAG, "onCreate: correct_rate="+correct_rate);
         return correct_rate;
+    }
+
+    public void finishquit(View v){
+        Intent finish = new Intent(this,MainActivity.class);
+        startActivity(finish);
     }
 }

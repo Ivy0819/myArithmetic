@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent finish = getIntent();
     }
 
     @Override
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.menu_set){
-            //openConfig();
+            Intent intro = new Intent(this,Intro.class);
+            startActivity(intro);
         }
         return super.onOptionsItemSelected(item);
     }
