@@ -138,7 +138,11 @@ public class Testing extends AppCompatActivity implements Runnable{
 
 //处理下一题&&完成
     public void next(View v){
-        answers[num] = String.format("%.2f",Double.valueOf(answer.getText().toString()).doubleValue());//获取上一题的answer
+        if(answer.getText().toString().equals("")){
+            answers[num]="null";
+        }else {
+            answers[num] = String.format("%.2f", Double.valueOf(answer.getText().toString()).doubleValue());//获取上一题的answer
+        }
         correct_num[num]=answers[num].equals(correct_result[num])?true:false;
         Log.i(TAG, "next: correct_num:"+correct_num[num]);
 
@@ -148,13 +152,21 @@ public class Testing extends AppCompatActivity implements Runnable{
             prior.setVisibility(View.VISIBLE);
             process.setText((num + 1) + "/" + question.length);
             formula.setText(question[num]);
-            answer.setText("");
+            if(answers[num].equals("null")){
+                answer.setText("");
+            }else {
+                answer.setText(answers[num]);
+            }
         }else if(num == (question.length-1)){
             prior.setVisibility(View.VISIBLE);
             next.setText(R.string.finish);
             process.setText((num + 1) + "/" + question.length);
             formula.setText(question[num]);
-            answer.setText("");
+            if(answers[num].equals("null")){
+                answer.setText("");
+            }else {
+                answer.setText(answers[num]);
+            }
         } else{
             Log.i(TAG, "next: begin to finish");
             toFinishPage();
@@ -170,12 +182,20 @@ public class Testing extends AppCompatActivity implements Runnable{
             prior.setVisibility(View.INVISIBLE);
             process.setText((num + 1) + "/" + (question.length));
             formula.setText(question[num]);
-            answer.setText(answers[num]);
+            if(answers[num].equals("null")){
+                answer.setText("");
+            }else {
+                answer.setText(answers[num]);
+            }
         }else{
             prior.setVisibility(View.VISIBLE);
             process.setText((num + 1) + "/" + (question.length));
             formula.setText(question[num]);
-            answer.setText(answers[num]);
+            if(answers[num].equals("null")){
+                answer.setText("");
+            }else {
+                answer.setText(answers[num]);
+            }
             next.setText(R.string.next);
         }
     }
